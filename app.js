@@ -1,19 +1,23 @@
 const express = require('express')
 const app = express()
-
-const hostname = '127.0.0.1'   // set constants
+const path = require('path')
+const hostname = '192.168.56.1'   // set constants
 const port = 3002
 
 app.get('/', function (req, res) {
-  res.send('Welcome home!')
+  res.sendFile(path.join(__dirname, '/tablegen.html'))
+})
+
+app.get('/', function (req, res) {
+   res.send('Welcome home!')
 })
 
 app.get('/hello', (req, res) => {
-  res.send('Hello World!')
+   res.send('Hello World!')
 })
 
 app.get('/big',  (req, res) =>{
-  res.send('<h1>Hello World!</h1>')
+   res.send('<h1>Hello World!</h1>')
 })
 
 app.get('/greeting/:id',  (req, res) =>{
@@ -21,7 +25,7 @@ app.get('/greeting/:id',  (req, res) =>{
 })
 
 app.get('/yo/:buddy',  (req, res) =>{
-  res.send('<h1>Yo, ' + req.params.buddy + '!</h1>')
+   res.send('<h1>Yo, ' + req.params.buddy + '!</h1>')
 })
 
 // handle non-existant routes
